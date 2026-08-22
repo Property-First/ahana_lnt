@@ -35,7 +35,7 @@ h1{font-size:clamp(48px,7.4vw,96px);letter-spacing:-.045em}
 h2{font-size:clamp(34px,4.5vw,58px);letter-spacing:-.035em}
 h3{font-size:28px}
 p{margin:0}
-.section{padding:96px 0}
+.section{padding:50px 0}
 .eyebrow{
 display:inline-flex;align-items:center;gap:10px;
 font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)
@@ -44,7 +44,7 @@ font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;col
 .btn{
 min-height:35px;padding:0 20px;border:1px solid transparent;
 display:inline-flex;align-items:center;justify-content:center;gap:10px;
-cursor:pointer;font-weight:800;transition:.2s;border-radius:0
+cursor:pointer;font-weight:800;transition:.2s;border-radius:0; width: fit-content;
 }
 .btn-black{background:var(--black);color:#fff; border-radius: 10px;}
 .btn-gold{background:var(--gold);color:#111; border-radius: 10px;    height: 8px !important;
@@ -298,9 +298,9 @@ background:var(--black);color:white;padding:36px;min-height:420px;display:flex;f
 .hero-copy .sub{font-size:15px}
 .hero-proof{grid-template-columns:1fr 1fr}
 .price-row{flex-direction:column;align-items:flex-start;gap:2px}
-.snapbar{margin-top:-18px}
+.snapbar{margin-top: 25px}
 .snapgrid{grid-template-columns:1fr 1fr}
-.snap{padding:16px 10px}
+.snap{padding:16px 10px; border-bottom: 1px solid var(--line); border-right: none}
 .overview-visual img{height:430px}
 .corner-stat{right:8px}
 .factlist,.tower-specs,.plan-specs,.connectivity,.dev-stats,.highlights-grid{grid-template-columns:1fr}
@@ -324,9 +324,13 @@ background:var(--black);color:white;padding:36px;min-height:420px;display:flex;f
 .floating{display:none}
 .mobilebar{
 position:fixed;display:grid;grid-template-columns:1fr 1fr 1fr;
-left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0 15px 40px rgba(0,0,0,.32)
+left:0px;right:0px;bottom:0px;z-index:80;background:var(--black);box-shadow:0 15px 40px rgba(0,0,0,.32)
 }
-.mobilebar a,.mobilebar button{border:0;background:transparent;color:#fff;padding:12px 6px;font-size:11px;font-weight:800}
+.mobilebar button{border:0;background:green;color:#fff;padding:12px 6px;font-size:11px;font-weight:800}
+.mobilebar .call{border:0;background:var(--black); text-align: center; color:#fff;padding:12px 6px;font-size:11px;font-weight:800}
+
+.mobilebar .whats{border:0;background:#25D366; text-align: center; color:#fff;padding:12px 6px;font-size:11px;font-weight:800}
+
 .mobilebar .brochure{background:var(--gold);color:#111}
 }
 
@@ -418,6 +422,10 @@ left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0
 
 /* Mobile */
 @media (max-width: 768px) {
+.navactions {
+    display: none;
+    gap: 8px;
+}
 
     .header .nav {
         position: relative;
@@ -489,7 +497,91 @@ left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0
     }
 }
 
+@media (max-width: 768px) {
 
+    .price-table {
+        width: 100%;
+        overflow: visible;
+    }
+
+    /* Hide table header */
+    .price-head {
+        display: none;
+    }
+
+    /* Convert each row into card */
+    .price-row2 {
+        display: block;
+        padding: 16px;
+        margin-bottom: 12px;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .price-row2 > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 8px 0;
+        border-bottom: 1px solid #f1f1f1;
+        font-size: 13px;
+    }
+
+    .price-row2 > div:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* Show labels */
+    .price-row2 > div::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #777;
+        flex-shrink: 0;
+    }
+
+    /* Type value */
+    .price-row2 .type {
+        font-size: 15px;
+        font-weight: 700;
+        color: #5a1f2b;
+    }
+
+    /* Price button */
+    .price-row2 .imp_button-gold {
+        /* display: inline-block; */
+        width: auto;
+        padding: 7px 12px;
+        font-size: 12px;
+        /* margin-left: auto; */
+        border-radius: 6px;
+        margin: 10px;
+    }
+}
+
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .price-row2 {
+        padding: 14px;
+    }
+
+    .price-row2 > div {
+        font-size: 12px;
+    }
+
+    .price-row2 .type {
+        font-size: 14px;
+    }
+
+    .price-row2 .imp_button-gold {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
 </style>
 </head>
 <body>
@@ -665,31 +757,31 @@ left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0
 <div class="type" data-label="Type">2 BHK</div>
 <div data-label="Variant">Grande</div>
 <div data-label="Carpet Area">845 sq. ft.</div>
-<div class="imp_button imp_button-gold" data-label="Price">₹2.79 Cr*</div>
+<div class="imp_button imp_button-gold open-modal" data-title="Download L&T Ahana Price Plan" data-label="Price">₹2.79 Cr*</div>
 </div>
 <div class="price-row2">
 <div class="type" data-label="Type">3 BHK</div>
 <div data-label="Variant">Premiere</div>
 <div data-label="Carpet Area">1,082 sq. ft.</div>
-<div class="imp_button imp_button-gold open-modal" data-label="Price">On Request</div>
+<div class="imp_button imp_button-gold open-modal" data-title="Download L&T Ahana Price Plan" data-label="Price">On Request</div>
 </div>
 <div class="price-row2">
 <div class="type" data-label="Type">3 BHK</div>
 <div data-label="Variant">Majesta</div>
 <div data-label="Carpet Area">1,190 sq. ft.</div>
-<div class="imp_button imp_button-gold" data-label="Price">On Request</div>
+<div class="imp_button imp_button-gold open-modal" data-title="Download L&T Ahana Price Plan" data-label="Price">On Request</div>
 </div>
 <div class="price-row2">
 <div class="type" data-label="Type">3 BHK</div>
 <div data-label="Variant">Supreme</div>
 <div data-label="Carpet Area">1,410 sq. ft.</div>
-<div class="imp_button imp_button-gold" data-label="Price">On Request</div>
+<div class="imp_button imp_button-gold open-modal" data-title="Download L&T Ahana Price Plan" data-label="Price">On Request</div>
 </div>
 <div class="price-row2">
 <div class="type" data-label="Type">4 BHK</div>
 <div data-label="Variant">Platina</div>
 <div data-label="Carpet Area">1,917 sq. ft.</div>
-<div class="imp_button imp_button-gold" data-label="Price">On Request</div>
+<div class="imp_button imp_button-gold open-modal" data-title="Download L&T Ahana Price Plan" data-label="Price">On Request</div>
 </div>
 </div>
  
@@ -976,17 +1068,18 @@ left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0
 </div>
 
 <div class="mobilebar">
-  <a href="tel:+919999999999">
+    <button class="brochure open-modal" data-title="Download L&T Ahana Brochure">
+    <i class="fa-solid fa-file-arrow-down"></i> Brochure
+  </button>
+  <a class="call" href="tel:+919999999999">
     <i class="fa-solid fa-phone"></i> Call
   </a>
 
-  <a href="https://wa.me/919999999999?text=Hi%2C%20I%20am%20interested%20in%20L%26T%20Ahana%20Malad%20East">
+  <a class="whats" href="https://wa.me/919999999999?text=Hi%2C%20I%20am%20interested%20in%20L%26T%20Ahana%20Malad%20East">
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 
-  <button class="brochure open-modal" data-title="Download L&T Ahana Brochure">
-    <i class="fa-solid fa-file-arrow-down"></i> Brochure
-  </button>
+  
 </div>
  
 <div class="modal" id="modal">
@@ -1000,7 +1093,7 @@ left:10px;right:10px;bottom:10px;z-index:80;background:var(--black);box-shadow:0
 <div class="field"><label>Name</label><input required placeholder="Your full name"></div>
 <div class="field"><label>Mobile Number</label><input required placeholder="+91 98XXXXXXXX"></div>
 <div class="field"><label>Email</label><input type="email" placeholder="name@email.com"></div>
-<div class="field"><label>Message</label><textarea placeholder="I would like the latest price, floor plan and site visit details."></textarea></div>
+<!-- <div class="field"><label>Message</label><textarea placeholder="I would like the latest price, floor plan and site visit details."></textarea></div> -->
 <button class="btn btn-black">Submit Enquiry</button>
 <div class="consent">By submitting, you agree to receive project-related communication.</div>
 <div class="success">Thank you. Your enquiry has been captured.</div>
